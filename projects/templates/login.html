@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<h1>Login</h1>
+<p>Pagina login para iniciar sesión</p>
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="usernameInput">Nombre de usuario</label><br>
+    <input type="text" name="username" placeholder="Ingrese su nombre de usuario" id="usernameInput"><br>
+    <label for="passwordInput">Contraseña</label><br>
+    <input type="password" name= "password" id="passwordInput"><br>
+    <button>Save</button>
+</form>
+{%endblock%}
