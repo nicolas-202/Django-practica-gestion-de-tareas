@@ -21,6 +21,8 @@
   /* === Feedback === */
   --danger: #ff6b6b;
   --success: #51cf66;
+  --error: rgba(255, 107, 107, 0.1);
+
 }
 
 body {
@@ -86,8 +88,31 @@ a {
 
 .error-message {
   color: var(--danger);
-  background-color: rgba(255, 107, 107, 0.1);
+  background-color: var(--error);
   border-radius: 0.375rem;
   padding: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.navbar {
+  background-color: var(--bg-secondary);
+}
+
+.navbar-brand {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.navbar-brand:hover{
+  color: var(--text-primary);
+}
+
+.nav-link{
+  color: var(--text-primary);
+}
+.nav-link:hover{
+  color: var(--accent);
+}
+.nav-item{
+  margin-left: 1rem;
 }
