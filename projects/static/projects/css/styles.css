@@ -125,3 +125,24 @@ a {
 .nav-item{
   margin-left: 1rem;
 }
+.navbar-toggler-icon{
+  background-image: none;
+  color: var(--text-primary);
+  font-weight: bold;
+  line-height: 1.5;
+}
+.navbar-toggler{
+  border-color: var(--text-primary);
+  border-width: 0.15rem;
+}
+.navbar-toggler:hover{
+  border-color: var(--accent);
+}
+
+.navbar-toggler-icon:hover{
+  color: var(--accent);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}

@@ -11,18 +11,26 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand px-5">
+        <nav class="navbar navbar-expand-md px-5">
                 {% if user.is_authenticated %}
-                <a class="navbar-brand mx-5 px-5 fs-3" href="{% url 'home' %}">✔ TaskFlow</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a></li>
-                </ul>
+                <a class="navbar-brand mx-md-5 px-md-5 fs-3" href="{% url 'home' %}">✔ TaskFlow</a>
                 {% else %}
-                <a class="navbar-brand mx-5 px-5 fs-3" href="{% url 'index' %}">✔ TaskFlow</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Entrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrarse</a></li>
-                </ul>
+                <a class="navbar-brand mx-md-5 px-md-5 fs-3" href="{% url 'index' %}">✔ TaskFlow</a>
+                {% endif %}
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon fs-2">☰</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Entrar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrarse</a></li>
+                    </ul>
+                </div>
                 {% endif %}
         </nav>
     </header>
