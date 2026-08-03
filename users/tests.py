@@ -84,6 +84,7 @@ class RegisterViewTests(TestCase):
         user = get_user(self.client)
         self.assertTrue(user.is_authenticated)
 
+
 class LogoutViewTests(TestCase):
     def setUp(self):
         User.objects.create_user(
