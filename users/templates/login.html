@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 my-5 ">
+            <div class="card shadow-lg px-3 pt-5 pb-2 text-center form-card">
+                <h1 class="fs-2">✔ TaskFlow</h1>
+                <h2 class="fs-4">Bienvenido de nuevo</h2>
+                <p>Gestiona tus proyectos con eficiencia y calidad.</p>
+                {% if error %}
+                    <p class="error-message">{{ error }}</p>
+                {% endif %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row text-start py-2 px-3 my-2">
+                        <label for="usernameInput" class = "form-label">Nombre de usuario</label>
+                        <input type="text" name="username" placeholder="👤 Ingrese su nombre de usuario" id="usernameInput" class="form-control form-input">
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+                    <div class="row text-start py-2 px-3 my-2">
+                        <label for="passwordInput" class="form-label">Contraseña</label>
+                        <input type="password" name= "password" id="passwordInput" class="form-control form-input" placeholder="👁️ Ingrese su contraseña">
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                        <p class="small pt-2"><a href="#">¿olvidaste tu contraseña?</a></p>
+                    </div>
+                    <div class="row justify-content-center pt-3 px-3">
+                        <button class="btn form-btn " id="loginButton">Iniciar sesión</button>
+                    </div>
+                    <p class="small px-3 pt-3">¿Aun no tienes una cuenta? <a href="{%url 'register'%}">Registrate</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'users/validations.js' %}"></script>
+{%endblock%}
