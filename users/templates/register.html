@@ -8,26 +8,66 @@
                 <h1 class="fs-2">✔ TaskFlow</h1>
                 <h2 class="fs-4">Crea tu cuenta</h2>
                 <p>Unete a miles de personas que optimizan su trabajo diariamente.</p>
-                {% if error %}
-                <p>{{ error }}</p>
-                {% endif %}
-                <form action="" method="post">
+                <form action="" method="post" id="registerForm" novalidate>
                     {% csrf_token %}
-                    {% for field in register_form %}
                     <div class="row text-start py-2 px-3 my-2">
-                        <label class="form-label px-3">{{ field.label }}</label>
-                        {{ field }}
-                        {% if field.errors %}
-                        <div class="text-danger small">{{ field.errors }}</div>
-                        {% endif %}
+                        <label class="form-label px-3" for="id_username">{{register_form.username.label}}</label>
+                        {{ register_form.username }}
+                        <div class="invalid-feedback" id="usernameError">
+                            {% for error in register_form.username.errors%}
+                                {{ error }}
+                            {% empty %}
+                                Este campo es obligatorio
+                            {% endfor %}
+                        </div>
+
                     </div>
-                    {% endfor %}
+                    <div class="row text-start py-2 px-3 my-2">
+                        <label class="form-label px-3" for="id_email">{{register_form.email.label}}</label>
+                        {{ register_form.email }}
+                        <div class="invalid-feedback" id="emailError">
+                            {% for error in register_form.email.errors%}
+                                {{ error }}
+                            {% empty %}
+                                Este campo es obligatorio
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row text-start py-2 px-3 my-2">
+                        <label class="form-label px-3" for="id_password1">{{register_form.password1.label}}</label>
+                        <div class="password-wrapper">
+                            {{ register_form.password1 }}
+                            <button type="button" id="togglePassword1" class="toggle-password">👁️</button>
+                            
+                        </div>
+                        <div class="invalid-feedback" id="password1Error">
+                                {% for error in register_form.password1.errors%}
+                                    {{ error }}
+                                {% empty %}
+                                    Este campo es obligatorio
+                                {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row text-start py-2 px-3 my-2">
+                        <label class="form-label px-3" for="id_password2">{{register_form.password2.label}}</label>
+                        <div class="password-wrapper">
+                            {{ register_form.password2 }}
+                            <button type="button" id="togglePassword2" class="toggle-password">👁️</button>
+                        </div>
+                        <div class="invalid-feedback" id="password2Error">
+                                {% for error in register_form.password2.errors %}
+                                    {{ error }}
+                                {% empty %}
+                                    Este campo es obligatorio
+                                {% endfor %}
+                        </div>
+                    </div>
                     <button class="btn form-btn w-100 mt-4">Crear cuenta</button>
                     <p class="small px-3 pt-3">¿ya tienes una cuenta? <a href="{%url 'login'%}">inicia sesión</a></p>
                 </form>
             </div>
-            
         </div>
     </div>
 </div>
+<script src="{% static 'users/validations.js' %}"></script>
 {%endblock%}
