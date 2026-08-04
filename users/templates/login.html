@@ -11,7 +11,7 @@
                 {% if error %}
                     <p class="error-message">{{ error }}</p>
                 {% endif %}
-                <form action="" method="post">
+                <form action="" method="post" id="loginForm" novalidate>
                     {% csrf_token %}
                     <div class="row text-start py-2 px-3 my-2">
                         <label for="usernameInput" class = "form-label">Nombre de usuario</label>
@@ -20,7 +20,10 @@
                     </div>
                     <div class="row text-start py-2 px-3 my-2">
                         <label for="passwordInput" class="form-label">Contraseña</label>
-                        <input type="password" name= "password" id="passwordInput" class="form-control form-input" placeholder="👁️ Ingrese su contraseña">
+                        <div class="password-wrapper">
+                            <input type="password" name= "password" id="passwordInput" class="form-control form-input password-field" placeholder="👁️ Ingrese su contraseña">
+                            <button type="button" id="loginTogglePassword" class="toggle-password">👁️</button>
+                        </div>
                         <div class="invalid-feedback">Este campo es obligatorio</div>
                         <p class="small pt-2"><a href="#">¿olvidaste tu contraseña?</a></p>
                     </div>

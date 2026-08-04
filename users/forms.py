@@ -21,7 +21,15 @@ class UserRegisterForm(UserCreationForm):
             'password1': '👁️ Tu contraseña',
             'password2': '👁️ Repite la contraseña',
         }
+        extra_classes = {
+            'password1': 'password-field',
+            'password2': 'password-field',
+        }
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control form-input'
             if field_name in placeholders:
                 field.widget.attrs['placeholder'] = placeholders[field_name]
+            if self.is_bound and field_name in self.errors:
+                field.widget.attrs['class'] += ' is-invalid'
+            if field_name in extra_classes:
+                field.widget.attrs['class'] += ' ' + extra_classes[field_name]

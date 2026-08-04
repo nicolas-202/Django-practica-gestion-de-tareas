@@ -146,3 +146,26 @@ a {
 .navbar-toggler:focus {
   box-shadow: none;
 }
+
+.password-wrapper{
+  padding: 0;
+  position: relative;
+}
+
+.password-wrapper:has(.is-invalid) ~ .invalid-feedback {
+    display: block;
+}
+
+.password-field{
+  padding-right: 3.5rem;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;  
+    right: 1.5rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
